@@ -5170,6 +5170,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3180607018220960747, guid: 8b82926f7053c9f428e3bc9ad7171a86, type: 3}
   m_PrefabInstance: {fileID: 3180607017652760160}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &828371071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828371060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7815a062f114438aa3fe91cae42baea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1426592124
 GameObject:
   m_ObjectHideFlags: 0
@@ -5309,6 +5321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3180607018220960745, guid: 8b82926f7053c9f428e3bc9ad7171a86, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3180607018220960747, guid: 8b82926f7053c9f428e3bc9ad7171a86, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5381,5 +5397,26 @@ PrefabInstance:
       propertyPath: maxAngularSpeed
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3249592626410153865, guid: 8b82926f7053c9f428e3bc9ad7171a86, type: 3}
+      propertyPath: _hp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249592626410153865, guid: 8b82926f7053c9f428e3bc9ad7171a86, type: 3}
+      propertyPath: _speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249592626410153865, guid: 8b82926f7053c9f428e3bc9ad7171a86, type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 7201258015221525585, guid: a6743e0d1e8f8f54ebef89712f162913, type: 3}
+    - target: {fileID: 3249592626410153865, guid: 8b82926f7053c9f428e3bc9ad7171a86, type: 3}
+      propertyPath: _rotationSpeed
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249592626410153865, guid: 8b82926f7053c9f428e3bc9ad7171a86, type: 3}
+      propertyPath: _bulletSpawnPoint
+      value: 
+      objectReference: {fileID: 760884911}
+    m_RemovedComponents:
+    - {fileID: 3180607018220960748, guid: 8b82926f7053c9f428e3bc9ad7171a86, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8b82926f7053c9f428e3bc9ad7171a86, type: 3}
