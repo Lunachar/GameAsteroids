@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 
 namespace Player
 {
@@ -12,6 +13,7 @@ namespace Player
         private float _speed;
         private Transform _bulletSpawnPoint;
         private GameObject _bulletPrefab;
+        private float _screenPadding = 0.1f;
        
         public PlayerModel(Transform transform, Rigidbody2D rb, BoxCollider2D boxCollider, float rotationSpeed, int hp,
             float moveSpeed, Transform bulletSpawnPoint, GameObject bulletPrefab)
@@ -30,19 +32,29 @@ namespace Player
         {
             Vector2 movement = new Vector2(horizontalInput, verticalInput);
             _rb.AddForce(movement * _speed, ForceMode2D.Impulse);
-            //_transform.Translate(movement);
-            
-            //_playerView.Rotate(.GetRotationAngle());
+             float rotationAngle = GetRotationAngle();
+             _transform.rotation = quaternion.Euler(0f, 0f, rotationAngle);
+
+             float minX = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
+             float maxX = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
+             float minY = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
+             float maxY = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
+
+             float clampedX = Mathf.Clamp(_transform.position.x, minX, maxX);
+             float clampedY = Mathf.Clamp(_transform.position.y, minY, maxY);
+
+             _transform.position = new Vector3(clampedX, clampedY, _transform.position.z);
+
         }
 
-        // public float GetRotationAngle()
-        // {
-        //     Vector3 mousePosition = Input.mousePosition;
-        //     Vector3 playerPosition = Camera.main.WorldToScreenPoint(_transform.position);
-        //     Vector3 direction = mousePosition - playerPosition;
-        //     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //     return angle;
-        // }
+        public float GetRotationAngle()
+        {
+            Vector2 mousePosition = Input.mousePosition;
+            Vector2 playerPosition = Camera.main.WorldToScreenPoint(_transform.position);
+            Vector2 direction = mousePosition - playerPosition;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg *_rotationSpeed;
+            return angle;
+        }
 
         // public void Shoot()
         // {

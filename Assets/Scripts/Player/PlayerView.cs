@@ -12,7 +12,7 @@ namespace Player
         internal Rigidbody2D _rb;
         internal BoxCollider2D _collider;
         
-        [SerializeField] private float _rotationSpeed;
+        [SerializeField] private float _rotationSpeed = 1f;
         [SerializeField] private int _hp;
         [SerializeField] private float _speed;
         
@@ -22,19 +22,13 @@ namespace Player
         private void Awake()
         {
             _transform = gameObject.transform;
+            _rb = GetComponent<Rigidbody2D>();
             _controller = GetComponent<PlayerController>();
-            _model = new PlayerModel(_transform, _rb,_collider, _rotationSpeed, _hp, _speed, _bulletSpawnPoint, _bulletPrefab);
+            _model = new PlayerModel(_transform, _rb,_collider, _rotationSpeed, _hp,
+                _speed, _bulletSpawnPoint, _bulletPrefab);
         }
 
-        private void Update()
-        {
-            //_controller.Move();
-        }
 
-        public void Rotate(float rotationAngle)
-        {
-            transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
-        }
 
         public void Shoot()
         {

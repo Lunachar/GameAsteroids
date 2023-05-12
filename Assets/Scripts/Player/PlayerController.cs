@@ -16,8 +16,8 @@ namespace Player
 
         private void Start()
         {
-            _playerView._rb = GetComponent<Rigidbody2D>();
-            _playerView._collider = GetComponent<BoxCollider2D>();
+             _playerView._rb = GetComponent<Rigidbody2D>();
+             _playerView._collider = GetComponent<BoxCollider2D>();
         }
 
 
