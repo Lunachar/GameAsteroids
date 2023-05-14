@@ -18,6 +18,7 @@ namespace Player
         
         [SerializeField] private Transform _bulletSpawnPoint;
         [SerializeField] private GameObject _bulletPrefab;
+        [SerializeField] private float BulletSpeed;
 
         private void Awake()
         {
@@ -32,7 +33,9 @@ namespace Player
 
         public void Shoot()
         {
-            Instantiate(_bulletPrefab, _bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
+            GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            bulletRb.AddForce(_bulletSpawnPoint.up * BulletSpeed, ForceMode2D.Impulse);
         }
     }
 }
